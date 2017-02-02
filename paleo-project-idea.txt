@@ -1,10 +1,17 @@
 Sean Mathew
 Paleo Project Idea
-Class Felidae, number of species: 
-83
 
-Class Canidae, number of species:
-172
+Order Artiodactyla, number of species:
+1040
+
+Order Perissodactyla, number of species:
+713
 
 Order Crocodilia, number of species:
 208
+
+Family Felidae, number of species: 
+83
+
+Family Canidae, number of species:
+172
