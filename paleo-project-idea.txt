@@ -1,23 +1,29 @@
 Sean Mathew
 Paleo Project Idea
 
+I am interested in mapping on a map of the Earth the fossil record of a group of animals through time, showing their migration patterns and evolutionary delineages. The project would timelapse the fossil record on a map through time.
 
+Using occurrence data from the PBDB and extract fossil age and locality data and visualize the data on a world map.
+
+
+Genus Preference
+
+Panthera
 tail -n +19 artiodactyla.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
-Order Artiodactyla, number of species:
-1040
 
-tail -n +19 perissodactyla.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
-Order Perissodactyla, number of species:
-713
+7
 
-tail -n +19 crocodilia.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
-Order Crocodilia, number of species:
-208
 
-tail -n +19 felidae.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
-Family Felidae, number of species: 
-83
 
-tail -n +19 canidae.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
-Family Canidae, number of species:
-172
+Canis
+tail -n +19 artiodactyla.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
+
+18
+
+
+
+Ursus
+tail -n +19 artiodactyla.csv | cut -d "," -f 10 | sort | uniq | wc -l >> paleo-project-idea.txt
+
+8
+
