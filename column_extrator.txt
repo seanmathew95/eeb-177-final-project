@@ -1,0 +1,10 @@
+def column_extractor(file_name, column):
+	file_input = open(file_name) #opens the inputted file
+	file_list = file_input.readlines() #creates a list with each line in the file as a separate object
+	extract_dict = {} #empty dictionary
+	for line in file_list:
+		species = line.split(",")[5] #species name is the sixth item in the list
+		extract = line.split(",")[column]
+		extract_dict[species] = extract
+	return extract_dict
+	
