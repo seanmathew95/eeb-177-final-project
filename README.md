@@ -12,3 +12,6 @@ Eizirik, Eduardo, Eduardo Eizirik, 1,2, * Naoya Yuhki, Warren E. Johnson, Marily
 
 **See .ipynb files for outlines**
 **See .Rmd files for R code used to produce graphs**
+**See PyRate folder for script to run PyRate and PyRate output graphs**
+**See output_png folder for .png of graphs produced with R**
+**See output_pdf fodler for .pdf of graphs produced with R**
