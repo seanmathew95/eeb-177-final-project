@@ -3,7 +3,7 @@
 # Script to run full pyrate pipeline on Canidae
 
 # navigate to the working directory
-cd ~/Desktop/eeb-177/eeb177-final-project/PyRate
+cd ~/Desktop/eeb-177/eeb177-final-project/PyRate/new-pyrate-run
 
 # download the data
 wget -O felidae_occ.csv "https://paleobiodb.org/data1.2/occs/list.csv?base_name=Felidae&show=acconly"
@@ -21,3 +21,9 @@ python ~/PyRate/PyRate.py felidae_occ_PyRate.py -data_info > data_summary.txt
 
 # And then, run PyRate!
 python ~/PyRate/PyRate.py felidae_occ_PyRate.py -n 1000000
+
+#change directory to the newly created 
+cd pyrate_mcmc_logs/
+
+#create graphs
+python ~/PyRate/PyRate.py -plot felidae_occ_1_marginal_rates.log
