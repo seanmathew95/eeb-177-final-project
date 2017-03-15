@@ -1,3 +1,5 @@
+### Reading in Data
+
     library(ggplot2)
     felids <- read.csv("felidae_ranges.csv", header = F, as.is = T)
     names(felids) <- c("genus", "species", "minage", "maxage")
@@ -10,6 +12,8 @@
     ## 4    Adelphailurus        Adelphailurus kansensis 7.60000 7.60000
     ## 5    Adelphailurus Adelphailurus n. sp. kansensis 7.60000 7.60000
     ## 6 Amphimachairodus  Amphimachairodus coloradensis 7.60000 7.60000
+
+### Occurences
 
     library("forcats")
     felids$maxage <- felids$maxage+0.5
@@ -34,8 +38,7 @@
 
     ## Warning: Removed 3 rows containing missing values (geom_linerange).
 
-Diversity
----------
+### Diversity
 
     library(tidyr)
     library(dplyr)
