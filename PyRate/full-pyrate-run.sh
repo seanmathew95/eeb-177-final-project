@@ -3,7 +3,7 @@
 # Script to run full pyrate pipeline on Canidae
 
 # navigate to the working directory
-cd ~/Desktop/eeb-177/eeb177-final-project/PyRate/new-pyrate-run
+cd ~/Desktop/eeb-177/eeb177-final-project/PyRate
 
 # download the data
 wget -O felidae_occ.csv "https://paleobiodb.org/data1.2/occs/list.csv?base_name=Felidae&show=acconly"
