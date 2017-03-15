@@ -4,7 +4,7 @@ author: "Sean Mathew"
 date: "March 9, 2017"
 output: md_document
 ---
-
+### Reading in Data
 ```{r}
 library(ggplot2)
 felids <- read.csv("felidae_ranges.csv", header = F, as.is = T)
@@ -12,7 +12,7 @@ names(felids) <- c("genus", "species", "minage", "maxage")
 head(felids)
 ```
 
-
+### Occurences
 ```{r}
 library("forcats")
 felids$maxage <- felids$maxage+0.5
@@ -33,7 +33,7 @@ felid_occ
 ggsave(filename = "output_pdf/felid_occ.pdf", plot = felid_occ)
 
 ```
-## Diversity
+### Diversity
 
 ```{r}
 library(tidyr)
