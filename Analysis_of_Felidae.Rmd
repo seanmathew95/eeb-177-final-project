@@ -29,7 +29,7 @@ felid_occ
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 ggsave(filename = "output_pdf/felid_occ.pdf", plot = felid_occ)
 
 ```
@@ -47,7 +47,7 @@ felid_div
 
 ```
 
-```{r}
+```{r, eval = FALSE}
 ggsave(filename = "output_pdf/felid_div.pdf", plot = felid_div)
 
 ```
