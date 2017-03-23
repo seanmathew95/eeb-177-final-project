@@ -10,7 +10,7 @@ csl: ecology-letters.csl
 ---
 # Introduction
 
-Felidae is a taxonomic family of cats. Members of Felidae range from the domestic cat to extant big cats, such as lions and tigers, but also extinct members such as the saber-toothed tiger. This project aims to analyze the diversity of Felidae through time and space. Throughout the history of Felidae, some interesting events include the divergenece between modern cats and now extinct saber-toothed cats, such as the smilodon, and the Late Miocene Radiation, which spiked another wave of speciation. Various graphs of diversity will illustrate these events. Most clades, according to models created by Raia, Carotenuto, et.al, are predicted to fall in species richness after large diversification events like the late Miocene and divergence of sabertooths. Felidae is indeed in decline, and many species, such as the tiger, are endangered today. 
+Felidae is a taxonomic family of cats. Members of Felidae range from the domestic cat to extant big cats, such as lions and tigers, but also extinct members such as the saber-toothed tiger. This project aims to analyze the diversity of Felidae through time and space. Throughout the history of Felidae, some interesting events include the divergenece between modern cats and now extinct saber-toothed cats, such as the smilidon, and the Late Miocene Radiation, which spiked another wave of speciation [@Christiansen2008;@Johnson73]. Various graphs of diversity will illustrate these events. Most clades, according to models created by Raia, Carotenuto, et.al, are predicted to fall in species richness after large diversification events like the late Miocene and divergence of sabertooths [@Raia2016]. Felidae is indeed in decline, and many species, such as the tiger, are endangered today. 
 
 ![Members of Felidae (clockwise from top left): Panthera leo,  Felis catus, Smilidon populator, Panthera tigris](examples_of_felidae/felidae.png)
 
@@ -23,21 +23,31 @@ The data utilized in this project is found on the PaleoBiology Database online a
 
 ## Mapping by Fossil Age(python)
 ```{python, eval = F}
-min_ma = column_extractor("formatted_felidae_col.csv", 0, 11) #extract lower bound of fossil age
-max_ma = column_extractor("formatted_felidae_col.csv", 0, 12) #extract upper bound of fossil age
-#iterate through data, find average fossil age, add it to a new dictionary with average fossil age for each fossil
+min_ma = column_extractor("formatted_felidae_col.csv", 0, 11) 
+#extract lower bound of fossil age
+
+max_ma = column_extractor("formatted_felidae_col.csv", 0, 12) 
+#extract upper bound of fossil age
+
+#iterate through data, find average fossil age, 
+#add it to a new dictionary with average fossil age for each fossil
 avg_ma = {}
 for key in min_ma.keys():
     avg = ( float(max_ma[key]) + float(min_ma[key]) ) / 2
     avg_ma[key] = avg
     
-longitude = column_extractor("formatted_felidae_col.csv", 0, 3) #extract longitude column
-latitude = column_extractor("formatted_felidae_col.csv", 0, 4) #extract latitude column
+longitude = column_extractor("formatted_felidae_col.csv", 0, 3) 
+#extract longitude column
+latitude = column_extractor("formatted_felidae_col.csv", 0, 4) 
+#extract latitude column
 
-strat_lng = stratify(avg_ma, longitude) #stratify longitude by avg_ma
-strat_lat = stratify(avg_ma, latitude) #stratify latitude by avg_ma
+strat_lng = stratify(avg_ma, longitude) 
+#stratify longitude by avg_ma
+strat_lat = stratify(avg_ma, latitude) 
+#stratify latitude by avg_ma
 
-unique_avg_ma ={} #empty dictionary to hold values of avg_ma as keys
+unique_avg_ma ={} 
+#empty dictionary to hold values of avg_ma as keys
 #for use as titles in map
 #populate dictionary with for loop
 for value in avg_ma.values():
@@ -45,10 +55,13 @@ for value in avg_ma.values():
 
 
 
-strat_lng2 = [] #new dictionaries to add longitude for each avg_ma and lower avg_ma
-strat_lat2 = [] #same as above but for latitude
+strat_lng2 = [] 
+#new dictionaries to add longitude for each avg_ma and lower avg_ma
+strat_lat2 = [] 
+#same as above but for latitude
 
-#this for loop will add all previous points to each current list of points
+#this for loop will add all previous 
+#points to each current list of points
 for i in range(0, len(strat_lng)):
     new_dict = {} #new dictionary for use in for loop
     index = i #variable to decrement for use in while loop
@@ -126,14 +139,26 @@ head(felids)
 library("forcats")
 felids <- felids %>% arrange(maxage)
 felids$maxage <- felids$maxage+0.5
-felid_occ <- ggplot(felids, aes( x = fct_reorder(species, minage, .desc = T), maxage, colour = genus))
-felid_occ <- felid_occ + geom_linerange(aes(ymin = minage, ymax = maxage + 0.5))
-felid_occ <- felid_occ + theme(legend.position="none")
-felid_occ <- felid_occ + coord_flip()
-felid_occ <- felid_occ +  theme(axis.text.y = element_text(size=3))
-felid_occ <- felid_occ + theme(axis.ticks.y=element_blank())
-felid_occ <- felid_occ + scale_y_continuous(limits=c(0, 20), expand = c(0, 0), breaks=c(0, 5, 10, 15, 20))
-felid_occ <- felid_occ + labs(title = "Felid Fossil Occurrences", x = "Species", y = "Ma ago") + theme(plot.title = element_text(hjust = 0.5, size=22, face = "bold"), axis.title =element_text(size=20))
+felid_occ <- ggplot(felids, 
+                    aes( x = fct_reorder(species, 
+                    minage, .desc = T), maxage, colour = genus))
+felid_occ <- felid_occ + 
+  geom_linerange(aes(ymin = minage, ymax = maxage + 0.5))
+felid_occ <- felid_occ + 
+  theme(legend.position="none")
+felid_occ <- felid_occ + 
+  coord_flip()
+felid_occ <- felid_occ +  
+  theme(axis.text.y = element_text(size=3))
+felid_occ <- felid_occ + 
+  theme(axis.ticks.y=element_blank())
+felid_occ <- felid_occ + 
+  scale_y_continuous(limits=c(0, 20), 
+  expand = c(0, 0), breaks=c(0, 5, 10, 15, 20))
+felid_occ <- felid_occ + 
+  labs(title = "Felid Fossil Occurrences", x = "Species", y = "Ma ago") + 
+  theme(plot.title = element_text(hjust = 0.5, 
+  size=22, face = "bold"), axis.title =element_text(size=20))
 
 felid_occ
 ```
@@ -143,13 +168,19 @@ felid_occ
 library(tidyr)
 library(dplyr)
 #create new variable diversity which is the number of species 
-diversity <- felids %>% gather(key = type, value = age, minage, maxage) %>% mutate(count = ifelse(type == "maxage", 1, -1)) %>% group_by(age) %>% summarise(count = sum(count))  %>% arrange(-age, -count) %>% mutate(diversity = cumsum(count)) 
+diversity <- felids %>% gather(key = type, value = age, minage, maxage) 
+  %>% mutate(count = ifelse(type == "maxage", 1, -1)) %>% group_by(age) 
+  %>% summarise(count = sum(count))  %>% arrange(-age, -count) 
+  %>% mutate(diversity = cumsum(count)) 
 
 #plot diversity v age
 felid_div <- ggplot(diversity, aes(x = age, y = diversity)) + geom_step()
 
 #add labels and theme
-felid_div <- felid_div + labs(title = "Felidae Diversity Through Time", x = "Ma ago", y = "Number of Species") + theme(plot.title = element_text(hjust = 0.5, size=22, face = "bold"), axis.title =element_text(size=20))
+felid_div <- felid_div + labs(title = "Felidae Diversity Through Time", 
+  x = "Ma ago", y = "Number of Species") + 
+  theme(plot.title = element_text(hjust = 0.5, size=22, face = "bold"), 
+  axis.title =element_text(size=20))
 felid_div
 
 ```
@@ -164,16 +195,20 @@ felid_div
 cd ~/Desktop/eeb-177/eeb177-final-project/PyRate
 
 # download the data
-wget -O felidae_occ.csv "https://paleobiodb.org/data1.2/occs/list.csv?base_name=Felidae&show=acconly"
+wget -O felidae_occ.csv "https://paleobiodb.org/data1.2/occs/list.csv
+          ?base_name=Felidae&show=acconly"
 
-# use the R script we had created to format the data into a pyrate-friendly file
+# use the R script we had created to format the data 
+#into a pyrate-friendly file
 # NOTE!
-# if the output files from the R script already exist in the working directory, 
+# if the output files from the R script already exist 
+#in the working directory, 
 # THIS STEP WILL NOT WORK!
 # The existent files are NOT overwritten!
 Rscript process_felid_data.R
 
-# Verify that the data formatting worked, and redirect the output into a file called 
+# Verify that the data formatting worked, and redirect 
+# the output into a file called 
 # data_summary.txt so that it may be inspected later.
 python ~/PyRate/PyRate.py felidae_occ_PyRate.py -data_info > data_summary.txt
 
@@ -198,15 +233,18 @@ python ~/PyRate/PyRate.py -plot felidae_occ_1_marginal_rates.log
 
 ![Speciation through time, made using PyRate](output_png/speciation.png)
 
-![Extinction through time, made using PyRate](output_png/extinction.png)
+![Felid extinction through time, made using PyRate](output_png/extinction.png)
 
-![Net Diversification through time, made using PyRate](output_png/net_diversification.png)
+![Felid net diversification through time, made using PyRate](output_png/net_diversification.png)
 
-![Longevity through time, made using PyRate](output_png/longevity.png)
+![Felid longevity through time, made using PyRate](output_png/longevity.png)
+
+
 \clearpage
 
 # Discussion
-
+This project aims to visualize the divergence of sabertooths, an increase in speciation during the Late Miocene(~5-11 MYA), and a consequent increase in speciation shortly after. First, the exploration of the history of Felidae observed the spatial distribution of Felid fossils through time. When watching the resulting GIF, the Miocene explosion can be seen. Around the time of the late Miocene (~5-11 MYA), there is an increase in the concentration and number of points on the map. This increase in points, however, is not separated by the spcecies, so we do not know how the diversity changes in these time periods. In order to investigate diversity more thoroughly, we can look to the graphs created in R. The occurrences through time graph should show new species starting  around the Late Miocene. Indeed many species start out between 5 and 11 MYA. Furthermore, Figure 3 shows the emergence of the Smilidon genus 5 MYA, making it one of the genuses created during the late Miocene radiation. Figure 4 more clearly shows a sharp increase in the number of species right around the 5 million year mark. However, these data are incomplete due to the inevitable scarcity of the fossil record in representing real events. Therefore, we must use PyRate to make better estimations of the real history. Figure 5 shows that the speciation rate was constant throughout, but the confidence intervals are wide enough to accomodate for an increase anywhere. Figure 6 shows extinctions rates, and shows a sharp icrease around 2.5 MYA. We expected to see increased extinction rates shortly following the Late Miocene, and indeed we do. The increased speciation may not have been estimated because of the lack of fossils, but the subsequent increase in extinction can be clearly seen. The net diversification, as shown by Figure 7, is estimated to be positive until the increase in extinction around 2.5 MYA, and is today at a relativley high negative number. Finally, figure 8 shows the Longevity of species through time. There is an overall decrease in the longevity of species, with current species having the shortest evolutionary lifespans. Conservation efforts are greatly needed in maintaining the current species diversity of Felidae, especially considering that it is only a fraction of the diversity throughout the history of Felids. 
+\clearpage
 
 # Github links:
 
@@ -227,4 +265,3 @@ https://github.com/seanmathew95/eeb-177-final-project/blob/master/Analysis_of_Fe
 \clearpage
 
 # References
-
