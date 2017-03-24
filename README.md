@@ -11,9 +11,17 @@ Johnson, Warren E., William J. Murphy, Agostinho Antunes, Emma Teeling, Stephen 
 Eizirik, Eduardo, Eduardo Eizirik, 1,2, * Naoya Yuhki, Warren E. Johnson, Marilyn Menotti-Raymond, Steven S. Hannah, and Stephen J. O’Brien. "Molecular Genetics and Evolution of Melanism in the Cat Family." Current Biology (2003): n. pag. Cell. Web. <http://www.cell.com/current-biology/pdf/S0960-9822(03)00128-3.pdf>.
 
 **See Final_report.pdf for the final report**
-**See .ipynb files for outlines**
-**See .Rmd files for R code used to produce graphs**
+
+**See .ipynb files for project deadlines and python code**
+
+**See Week10_lightning_presentation.ipynb for final versions of python code**
+
+**See Analysis_of_Felidae.Rmd for R code used to produce graphs**
+
 **See PyRate folder for script to run PyRate and PyRate output graphs**
+
 **See output_png folder for .png of graphs produced with R, and PyRate**
+
 **See output_pdf fodler for .pdf of graphs produced with R**
+
 **See maps folder for each map produced in python and gif of maps put together**
